@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: WBM_Bear.ma
-//Last modified: Thu, Sep 07, 2023 09:02:38 AM
+//Last modified: Sun, Sep 10, 2023 07:50:48 AM
 //Codeset: 1252
 requires maya "2024";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.3.1.1";
@@ -10,12 +10,12 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202304191415-7fa20164c6";
 fileInfo "osv" "Windows 10 Home v2009 (Build: 19045)";
-fileInfo "UUID" "163D235D-4A3C-99D5-A077-C0BABD791D3C";
+fileInfo "UUID" "C4BC62FF-42AE-6308-F332-94B1825167B0";
 createNode transform -s -n "persp";
 	rename -uid "64C76BE3-4122-459F-E814-A188E3E4A9FA";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 12.64600485346158 8.4042250899593274 6.9135973304127507 ;
-	setAttr ".r" -type "double3" -23.138352729646325 60.19999999998786 3.1999208518753661e-15 ;
+	setAttr ".t" -type "double3" 11.593581490875252 7.967147249572152 8.7791955879465231 ;
+	setAttr ".r" -type "double3" -21.338352729652009 -308.59999999999729 2.5490132216531375e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "B1649100-47FB-DDDC-BAC1-DC9CF4B5748D";
 	setAttr -k off ".v" no;
@@ -10702,20 +10702,20 @@ createNode mesh -n "BearMeshShape" -p "BearMesh";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "6BD0D84B-4A6B-8EBD-004B-F998F4ED068F";
+	rename -uid "88DC33EA-4BED-0F29-496A-6298A7C0CB73";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "5E8F5155-46D7-D6D9-2C83-438CB33949B5";
+	rename -uid "69A19EFE-4CB5-DF3D-1B77-438905F26D64";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "7E8B1A32-4222-20C4-6BB2-BC8CF845CE8A";
+	rename -uid "048674E9-43DF-2F5C-43C4-A48EFF322A95";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "A634BEBE-4BAB-7D54-F986-9E9E9314F91E";
+	rename -uid "1597786C-4639-A0A1-EBA5-7EA7CD23F7BF";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "C778AFE2-42BB-FD12-B556-8AAD0560D813";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "4826554B-44CF-6D67-2F94-6F982DB593BD";
+	rename -uid "D0763EDE-4BB4-A75E-DD51-EF8445D55433";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "925F7C7E-4D89-5357-ECBA-C6B2FCF850DE";
 	setAttr ".g" yes;
@@ -10825,6 +10825,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "groupId1.id" "BearMeshShape.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "BearMeshShape.iog.og[0].gco";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
